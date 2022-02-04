@@ -9,6 +9,8 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { newPostValidation } from "./validator.js";
 import uniqid from "uniqid";
+import { createPDFReadableStream } from "./pdf-utils.js";
+import { pipeline } from "stream";
 
 const movieRouter = express.Router();
 
@@ -179,6 +181,31 @@ movieRouter.delete("/:id/review/:id", async (req, res, next) => {
     await writeReview(remainingPosts);
 
     res.send({ message: `Review with ${reviewId} is successfully deleted` });
+  } catch (error) {
+    next(error);
+  }
+});
+
+movieRouter.get("/download/:id", async (req, res, next) => {
+  try {
+    const blogPosts = await getMovies();
+    const selectedBlogPost = blogPosts.find(
+      blogPost => blogPost.imdbID === req.params.id
+    );
+    //create PDF readableStream
+    const source = await createPDFReadableStream(selectedBlogPost);
+    // set header
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=${selectedBlogPost.imdbID}.pdf`
+    );
+    // set destination
+    const destination = res;
+    pipeline(source, destination, err => {
+      if (err) {
+        next(err);
+      }
+    });
   } catch (error) {
     next(error);
   }

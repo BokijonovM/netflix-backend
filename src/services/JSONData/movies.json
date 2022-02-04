@@ -15,5 +15,21 @@
     "Type": "movie",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
     "createdAt": "2022-02-04T11:03:31.445Z"
+  },
+  {
+    "imdbID": "rkowrgbwkz8hw16f",
+    "Title": "Avengers 2",
+    "Year": "2014",
+    "Type": "Horror",
+    "Poster": "https://th.bing.com/th/id/R.794aca9145a1f5a1ce3b668437003fe3?rik=2Y7NUce08lcS5Q&pid=ImgRaw&r=0",
+    "createdAt": "2022-02-04T14:20:41.079Z"
+  },
+  {
+    "imdbID": "rkowrgbwkz8i09rs",
+    "Title": "Avengers 5",
+    "Year": "2023",
+    "Type": "Horror",
+    "Poster": "https://th.bing.com/th/id/OIP.OlawU0bZzfzwA-DJv2cdwQHaLc?pid=ImgDet&rs=1",
+    "createdAt": "2022-02-04T14:23:58.840Z"
   }
 ]
