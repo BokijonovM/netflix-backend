@@ -16,6 +16,21 @@ movieRouter.get("/", async (req, res, next) => {
   }
 });
 
+movieRouter.get("/:id", async (req, res, next) => {
+  try {
+    const moviesArray = await getMovies();
+    const singleMovie = moviesArray.find(
+      singleMovie => singleMovie.imdbID === req.params.id
+    );
+    if (!singleMovie) {
+      res.send({ message: `Movie with id ${req.params.id} is not found!` });
+    }
+    res.send(singleMovie);
+  } catch (error) {
+    next(error);
+  }
+});
+
 movieRouter.post("/", newPostValidation, async (req, res, next) => {
   try {
     const movie = {
