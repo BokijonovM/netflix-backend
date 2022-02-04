@@ -114,4 +114,33 @@ movieRouter.post("/:id/review", async (req, res, next) => {
   }
 });
 
+movieRouter.get("/:id/review", async (req, res, next) => {
+  try {
+    const reviewArray = await getReview();
+    const filtered = reviewArray.filter(
+      ({ elementId }) => elementId === req.params.id
+    );
+    res.send(filtered);
+  } catch (error) {
+    next(error);
+  }
+});
+
+movieRouter.get("/:id/review/:rId", async (req, res, next) => {
+  try {
+    const reviewArray = await getReview();
+    const singleReview = reviewArray.find(
+      singleReview => singleReview.id === req.params.rId
+    );
+    if (!singleReview) {
+      res
+        .status(404)
+        .send({ message: `Review with ${req.params / rId} is not found!` });
+    }
+    res.send(singleReview);
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default movieRouter;
