@@ -168,4 +168,20 @@ movieRouter.put("/:id/review/:rId", async (req, res, next) => {
   }
 });
 
+movieRouter.delete("/:productId/review/:id", async (req, res, next) => {
+  try {
+    const reviewId = req.params.id;
+
+    const postsArray = await getReview();
+
+    const remainingPosts = postsArray.filter(post => post.id !== reviewId);
+
+    await writeReview(remainingPosts);
+
+    res.send({ message: `Review with ${reviewId} is successfully deleted` });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default movieRouter;
