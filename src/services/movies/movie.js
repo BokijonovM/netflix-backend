@@ -47,4 +47,46 @@ movieRouter.post("/", newPostValidation, async (req, res, next) => {
   }
 });
 
+movieRouter.put("/:id", async (req, res, next) => {
+  try {
+    const movieId = req.params.id;
+    const movieArray = await getMovies();
+    const index = movieArray.findIndex(movie => movie.imdbID === movieId);
+    if (!index == -1) {
+      res
+        .status(404)
+        .send({ message: `Movie with id ${movieId} is not found!` });
+    }
+    const previousMovie = movieArray[index];
+    const changedMovie = {
+      ...previousMovie,
+      ...req.body,
+      updatedAt: new Date(),
+      imdbID: movieId,
+    };
+    movieArray[index] = changedMovie;
+    await writeMovies(movieArray);
+
+    res.send(changedMovie);
+  } catch (error) {
+    next(error);
+  }
+});
+
+movieRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const movieArray = await getMovies();
+
+    const remaining = movieArray.filter(
+      movie => movie.imdbID !== req.params.id
+    );
+    await writeMovies(remaining);
+
+    res
+      .status(201)
+      .send(`Movie with id ${req.params.id} is successfully deleted!`);
+  } catch (error) {
+    next(error);
+  }
+});
 export default movieRouter;
