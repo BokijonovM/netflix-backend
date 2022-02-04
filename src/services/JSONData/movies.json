@@ -1,1 +1,19 @@
-[{"imdbID":"rkowrlxkkz8a5zqb","Title":"The Lord of the Rings: The Fellowship of the Ring","Year":"2001","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg","createdAt":"2022-02-04T10:44:28.834Z","updatedAt":"2022-02-04T11:00:03.273Z"},{"imdbID":"rkowrisskz8auhdi","Title":"The Lord of the Rings: The Fellowship of the Ring","Year":"2001","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg","createdAt":"2022-02-04T11:03:31.445Z"}]
+[
+  {
+    "imdbID": "rkowrlxkkz8a5zqb",
+    "Title": "The Lord of the Rings: The Fellowship of the Ring",
+    "Year": "2001",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
+    "createdAt": "2022-02-04T10:44:28.834Z",
+    "updatedAt": "2022-02-04T11:00:03.273Z"
+  },
+  {
+    "imdbID": "rkowrisskz8auhdi",
+    "Title": "The Lord of the Rings: The Fellowship of the Ring",
+    "Year": "2001",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
+    "createdAt": "2022-02-04T11:03:31.445Z"
+  }
+]

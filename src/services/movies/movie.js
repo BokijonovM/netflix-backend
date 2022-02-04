@@ -168,7 +168,7 @@ movieRouter.put("/:id/review/:rId", async (req, res, next) => {
   }
 });
 
-movieRouter.delete("/:productId/review/:id", async (req, res, next) => {
+movieRouter.delete("/:id/review/:id", async (req, res, next) => {
   try {
     const reviewId = req.params.id;
 
