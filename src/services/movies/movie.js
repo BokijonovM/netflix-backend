@@ -1,5 +1,10 @@
 import express from "express";
-import { getMovies, writeMovies } from "../../lib/fs-movies.js";
+import {
+  getMovies,
+  writeMovies,
+  getReview,
+  writeReview,
+} from "../../lib/fs-movies.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { newPostValidation } from "./validator.js";
@@ -89,4 +94,24 @@ movieRouter.delete("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+// ********************* add reviews *********************
+movieRouter.post("/:id/review", async (req, res, next) => {
+  try {
+    const newReview = {
+      ...req.body,
+      createdAt: new Date(),
+      elementId: req.params.id,
+      id: uniqid(),
+    };
+    const reviewArray = await getReview();
+
+    reviewArray.push(newReview);
+    await writeReview(reviewArray);
+    res.send(newReview);
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default movieRouter;
