@@ -9,6 +9,7 @@ import {
   notFoundHandler,
   genericErrorHandler,
 } from "./errorHandler.js";
+import { setServers } from "dns";
 
 const server = express();
 
@@ -39,4 +40,7 @@ console.table(listEndpoints(server));
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+setServers.once("error", () => {
+  console.log(error);
 });
